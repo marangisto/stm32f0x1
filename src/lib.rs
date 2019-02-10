@@ -51,7 +51,30 @@ pub fn gpiof() -> *mut GPIOF {
 
 #[repr(C)]
 /// 
-pub struct GPIOD { }
+pub struct GPIOD {
+  /// [0]: GPIO port mode register
+  pub moder: RW<u32>,
+  /// [4]: GPIO port output type register
+  pub otyper: RW<u32>,
+  /// [8]: GPIO port output speed register
+  pub ospeedr: RW<u32>,
+  /// [12]: GPIO port pull-up/pull-down register
+  pub pupdr: RW<u32>,
+  /// [16]: GPIO port input data register
+  pub idr: RO<u32>,
+  /// [20]: GPIO port output data register
+  pub odr: RW<u32>,
+  /// [24]: GPIO port bit set/reset register
+  pub bsrr: WO<u32>,
+  /// [28]: GPIO port configuration lock register
+  pub lckr: RW<u32>,
+  /// [32]: GPIO alternate function low register
+  pub afrl: RW<u32>,
+  /// [36]: GPIO alternate function high register
+  pub afrh: RW<u32>,
+  /// [40]: Port bit reset register
+  pub brr: WO<u32>,
+}
 
 pub fn gpiod() -> *mut GPIOD {
   1207962624 as *mut GPIOD
@@ -59,8 +82,6 @@ pub fn gpiod() -> *mut GPIOD {
 
 #[repr(C)]
 /// 
-#[repr(C)]
-/// General-purpose I/Os
 pub struct GPIOC {
   /// [0]: GPIO port mode register
   pub moder: RW<u32>,
@@ -86,14 +107,36 @@ pub struct GPIOC {
   pub brr: WO<u32>,
 }
 
-
 pub fn gpioc() -> *mut GPIOC {
   1207961600 as *mut GPIOC
 }
 
 #[repr(C)]
 /// 
-pub struct GPIOB { }
+pub struct GPIOB {
+  /// [0]: GPIO port mode register
+  pub moder: RW<u32>,
+  /// [4]: GPIO port output type register
+  pub otyper: RW<u32>,
+  /// [8]: GPIO port output speed register
+  pub ospeedr: RW<u32>,
+  /// [12]: GPIO port pull-up/pull-down register
+  pub pupdr: RW<u32>,
+  /// [16]: GPIO port input data register
+  pub idr: RO<u32>,
+  /// [20]: GPIO port output data register
+  pub odr: RW<u32>,
+  /// [24]: GPIO port bit set/reset register
+  pub bsrr: WO<u32>,
+  /// [28]: GPIO port configuration lock register
+  pub lckr: RW<u32>,
+  /// [32]: GPIO alternate function low register
+  pub afrl: RW<u32>,
+  /// [36]: GPIO alternate function high register
+  pub afrh: RW<u32>,
+  /// [40]: Port bit reset register
+  pub brr: WO<u32>,
+}
 
 pub fn gpiob() -> *mut GPIOB {
   1207960576 as *mut GPIOB
@@ -101,7 +144,30 @@ pub fn gpiob() -> *mut GPIOB {
 
 #[repr(C)]
 /// 
-pub struct GPIOE { }
+pub struct GPIOE {
+  /// [0]: GPIO port mode register
+  pub moder: RW<u32>,
+  /// [4]: GPIO port output type register
+  pub otyper: RW<u32>,
+  /// [8]: GPIO port output speed register
+  pub ospeedr: RW<u32>,
+  /// [12]: GPIO port pull-up/pull-down register
+  pub pupdr: RW<u32>,
+  /// [16]: GPIO port input data register
+  pub idr: RO<u32>,
+  /// [20]: GPIO port output data register
+  pub odr: RW<u32>,
+  /// [24]: GPIO port bit set/reset register
+  pub bsrr: WO<u32>,
+  /// [28]: GPIO port configuration lock register
+  pub lckr: RW<u32>,
+  /// [32]: GPIO alternate function low register
+  pub afrl: RW<u32>,
+  /// [36]: GPIO alternate function high register
+  pub afrh: RW<u32>,
+  /// [40]: Port bit reset register
+  pub brr: WO<u32>,
+}
 
 pub fn gpioe() -> *mut GPIOE {
   1207963648 as *mut GPIOE
@@ -167,7 +233,26 @@ pub fn spi1() -> *mut SPI1 {
 
 #[repr(C)]
 /// 
-pub struct SPI2 { }
+pub struct SPI2 {
+  /// [0]: control register 1
+  pub cr1: RW<u32>,
+  /// [4]: control register 2
+  pub cr2: RW<u32>,
+  /// [8]: status register
+  pub sr: RW<u32>,
+  /// [12]: data register
+  pub dr: RW<u32>,
+  /// [16]: CRC polynomial register
+  pub crcpr: RW<u32>,
+  /// [20]: RX CRC register
+  pub rxcrcr: RO<u32>,
+  /// [24]: TX CRC register
+  pub txcrcr: RO<u32>,
+  /// [28]: I2S configuration register
+  pub i2scfgr: RW<u32>,
+  /// [32]: I2S prescaler register
+  pub i2spr: RW<u32>,
+}
 
 pub fn spi2() -> *mut SPI2 {
   1073756160 as *mut SPI2
@@ -219,7 +304,30 @@ pub fn i2c1() -> *mut I2C1 {
 
 #[repr(C)]
 /// 
-pub struct I2C2 { }
+pub struct I2C2 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Own address register 1
+  pub oar1: RW<u32>,
+  /// [12]: Own address register 2
+  pub oar2: RW<u32>,
+  /// [16]: Timing register
+  pub timingr: RW<u32>,
+  /// [20]: Status register 1
+  pub timeoutr: RW<u32>,
+  /// [24]: Interrupt and Status register
+  pub isr: RW<u32>,
+  /// [28]: Interrupt clear register
+  pub icr: WO<u32>,
+  /// [32]: PEC register
+  pub pecr: RO<u32>,
+  /// [36]: Receive data register
+  pub rxdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub txdr: RW<u32>,
+}
 
 pub fn i2c2() -> *mut I2C2 {
   1073764352 as *mut I2C2
@@ -357,7 +465,46 @@ pub fn tim2() -> *mut TIM2 {
 
 #[repr(C)]
 /// 
-pub struct TIM3 { }
+pub struct TIM3 {
+  /// [0]: control register 1
+  pub cr1: RW<u32>,
+  /// [4]: control register 2
+  pub cr2: RW<u32>,
+  /// [8]: slave mode control register
+  pub smcr: RW<u32>,
+  /// [12]: DMA/Interrupt enable register
+  pub dier: RW<u32>,
+  /// [16]: status register
+  pub sr: RW<u32>,
+  /// [20]: event generation register
+  pub egr: WO<u32>,
+  /// [24]: capture/compare mode register 1 (input mode)
+  pub ccmr1_input: RW<u32>,
+  /// [28]: capture/compare mode register 2 (input mode)
+  pub ccmr2_input: RW<u32>,
+  /// [32]: capture/compare enable register
+  pub ccer: RW<u32>,
+  /// [36]: counter
+  pub cnt: RW<u32>,
+  /// [40]: prescaler
+  pub psc: RW<u32>,
+  /// [44]: auto-reload register
+  pub arr: RW<u32>,
+  reserved0x30: u32,
+  /// [52]: capture/compare register 1
+  pub ccr1: RW<u32>,
+  /// [56]: capture/compare register 2
+  pub ccr2: RW<u32>,
+  /// [60]: capture/compare register 3
+  pub ccr3: RW<u32>,
+  /// [64]: capture/compare register 4
+  pub ccr4: RW<u32>,
+  reserved0x44: u32,
+  /// [72]: DMA control register
+  pub dcr: RW<u32>,
+  /// [76]: DMA address for full transfer
+  pub dmar: RW<u32>,
+}
 
 pub fn tim3() -> *mut TIM3 {
   1073742848 as *mut TIM3
@@ -435,7 +582,28 @@ pub fn tim6() -> *mut TIM6 {
 
 #[repr(C)]
 /// 
-pub struct TIM7 { }
+pub struct TIM7 {
+  /// [0]: control register 1
+  pub cr1: RW<u32>,
+  /// [4]: control register 2
+  pub cr2: RW<u32>,
+  reserved0x8: u32,
+  /// [12]: DMA/Interrupt enable register
+  pub dier: RW<u32>,
+  /// [16]: status register
+  pub sr: RW<u32>,
+  /// [20]: event generation register
+  pub egr: WO<u32>,
+  reserved0x18: u32,
+  reserved0x1c: u32,
+  reserved0x20: u32,
+  /// [36]: counter
+  pub cnt: RW<u32>,
+  /// [40]: prescaler
+  pub psc: RW<u32>,
+  /// [44]: auto-reload register
+  pub arr: RW<u32>,
+}
 
 pub fn tim7() -> *mut TIM7 {
   1073746944 as *mut TIM7
@@ -760,7 +928,74 @@ pub fn dma1() -> *mut DMA1 {
 
 #[repr(C)]
 /// 
-pub struct DMA2 { }
+pub struct DMA2 {
+  /// [0]: DMA interrupt status register (DMA_ISR)
+  pub isr: RO<u32>,
+  /// [4]: DMA interrupt flag clear register (DMA_IFCR)
+  pub ifcr: WO<u32>,
+  /// [8]: DMA channel configuration register (DMA_CCR)
+  pub ccr1: RW<u32>,
+  /// [12]: DMA channel 1 number of data register
+  pub cndtr1: RW<u32>,
+  /// [16]: DMA channel 1 peripheral address register
+  pub cpar1: RW<u32>,
+  /// [20]: DMA channel 1 memory address register
+  pub cmar1: RW<u32>,
+  reserved0x18: u32,
+  /// [28]: DMA channel configuration register (DMA_CCR)
+  pub ccr2: RW<u32>,
+  /// [32]: DMA channel 2 number of data register
+  pub cndtr2: RW<u32>,
+  /// [36]: DMA channel 2 peripheral address register
+  pub cpar2: RW<u32>,
+  /// [40]: DMA channel 2 memory address register
+  pub cmar2: RW<u32>,
+  reserved0x2c: u32,
+  /// [48]: DMA channel configuration register (DMA_CCR)
+  pub ccr3: RW<u32>,
+  /// [52]: DMA channel 3 number of data register
+  pub cndtr3: RW<u32>,
+  /// [56]: DMA channel 3 peripheral address register
+  pub cpar3: RW<u32>,
+  /// [60]: DMA channel 3 memory address register
+  pub cmar3: RW<u32>,
+  reserved0x40: u32,
+  /// [68]: DMA channel configuration register (DMA_CCR)
+  pub ccr4: RW<u32>,
+  /// [72]: DMA channel 4 number of data register
+  pub cndtr4: RW<u32>,
+  /// [76]: DMA channel 4 peripheral address register
+  pub cpar4: RW<u32>,
+  /// [80]: DMA channel 4 memory address register
+  pub cmar4: RW<u32>,
+  reserved0x54: u32,
+  /// [88]: DMA channel configuration register (DMA_CCR)
+  pub ccr5: RW<u32>,
+  /// [92]: DMA channel 5 number of data register
+  pub cndtr5: RW<u32>,
+  /// [96]: DMA channel 5 peripheral address register
+  pub cpar5: RW<u32>,
+  /// [100]: DMA channel 5 memory address register
+  pub cmar5: RW<u32>,
+  reserved0x68: u32,
+  /// [108]: DMA channel configuration register (DMA_CCR)
+  pub ccr6: RW<u32>,
+  /// [112]: DMA channel 6 number of data register
+  pub cndtr6: RW<u32>,
+  /// [116]: DMA channel 6 peripheral address register
+  pub cpar6: RW<u32>,
+  /// [120]: DMA channel 6 memory address register
+  pub cmar6: RW<u32>,
+  reserved0x7c: u32,
+  /// [128]: DMA channel configuration register (DMA_CCR)
+  pub ccr7: RW<u32>,
+  /// [132]: DMA channel 7 number of data register
+  pub cndtr7: RW<u32>,
+  /// [136]: DMA channel 7 peripheral address register
+  pub cpar7: RW<u32>,
+  /// [140]: DMA channel 7 memory address register
+  pub cmar7: RW<u32>,
+}
 
 pub fn dma2() -> *mut DMA2 {
   1073873920 as *mut DMA2
@@ -1074,7 +1309,30 @@ pub fn usart1() -> *mut USART1 {
 
 #[repr(C)]
 /// 
-pub struct USART2 { }
+pub struct USART2 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Control register 3
+  pub cr3: RW<u32>,
+  /// [12]: Baud rate register
+  pub brr: RW<u32>,
+  /// [16]: Guard time and prescaler register
+  pub gtpr: RW<u32>,
+  /// [20]: Receiver timeout register
+  pub rtor: RW<u32>,
+  /// [24]: Request register
+  pub rqr: RW<u32>,
+  /// [28]: Interrupt &amp; status register
+  pub isr: RO<u32>,
+  /// [32]: Interrupt flag clear register
+  pub icr: RW<u32>,
+  /// [36]: Receive data register
+  pub rdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub tdr: RW<u32>,
+}
 
 pub fn usart2() -> *mut USART2 {
   1073759232 as *mut USART2
@@ -1082,7 +1340,30 @@ pub fn usart2() -> *mut USART2 {
 
 #[repr(C)]
 /// 
-pub struct USART3 { }
+pub struct USART3 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Control register 3
+  pub cr3: RW<u32>,
+  /// [12]: Baud rate register
+  pub brr: RW<u32>,
+  /// [16]: Guard time and prescaler register
+  pub gtpr: RW<u32>,
+  /// [20]: Receiver timeout register
+  pub rtor: RW<u32>,
+  /// [24]: Request register
+  pub rqr: RW<u32>,
+  /// [28]: Interrupt &amp; status register
+  pub isr: RO<u32>,
+  /// [32]: Interrupt flag clear register
+  pub icr: RW<u32>,
+  /// [36]: Receive data register
+  pub rdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub tdr: RW<u32>,
+}
 
 pub fn usart3() -> *mut USART3 {
   1073760256 as *mut USART3
@@ -1090,7 +1371,30 @@ pub fn usart3() -> *mut USART3 {
 
 #[repr(C)]
 /// 
-pub struct USART4 { }
+pub struct USART4 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Control register 3
+  pub cr3: RW<u32>,
+  /// [12]: Baud rate register
+  pub brr: RW<u32>,
+  /// [16]: Guard time and prescaler register
+  pub gtpr: RW<u32>,
+  /// [20]: Receiver timeout register
+  pub rtor: RW<u32>,
+  /// [24]: Request register
+  pub rqr: RW<u32>,
+  /// [28]: Interrupt &amp; status register
+  pub isr: RO<u32>,
+  /// [32]: Interrupt flag clear register
+  pub icr: RW<u32>,
+  /// [36]: Receive data register
+  pub rdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub tdr: RW<u32>,
+}
 
 pub fn usart4() -> *mut USART4 {
   1073761280 as *mut USART4
@@ -1098,7 +1402,30 @@ pub fn usart4() -> *mut USART4 {
 
 #[repr(C)]
 /// 
-pub struct USART6 { }
+pub struct USART6 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Control register 3
+  pub cr3: RW<u32>,
+  /// [12]: Baud rate register
+  pub brr: RW<u32>,
+  /// [16]: Guard time and prescaler register
+  pub gtpr: RW<u32>,
+  /// [20]: Receiver timeout register
+  pub rtor: RW<u32>,
+  /// [24]: Request register
+  pub rqr: RW<u32>,
+  /// [28]: Interrupt &amp; status register
+  pub isr: RO<u32>,
+  /// [32]: Interrupt flag clear register
+  pub icr: RW<u32>,
+  /// [36]: Receive data register
+  pub rdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub tdr: RW<u32>,
+}
 
 pub fn usart6() -> *mut USART6 {
   1073812480 as *mut USART6
@@ -1106,7 +1433,30 @@ pub fn usart6() -> *mut USART6 {
 
 #[repr(C)]
 /// 
-pub struct USART7 { }
+pub struct USART7 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Control register 3
+  pub cr3: RW<u32>,
+  /// [12]: Baud rate register
+  pub brr: RW<u32>,
+  /// [16]: Guard time and prescaler register
+  pub gtpr: RW<u32>,
+  /// [20]: Receiver timeout register
+  pub rtor: RW<u32>,
+  /// [24]: Request register
+  pub rqr: RW<u32>,
+  /// [28]: Interrupt &amp; status register
+  pub isr: RO<u32>,
+  /// [32]: Interrupt flag clear register
+  pub icr: RW<u32>,
+  /// [36]: Receive data register
+  pub rdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub tdr: RW<u32>,
+}
 
 pub fn usart7() -> *mut USART7 {
   1073813504 as *mut USART7
@@ -1114,7 +1464,30 @@ pub fn usart7() -> *mut USART7 {
 
 #[repr(C)]
 /// 
-pub struct USART8 { }
+pub struct USART8 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Control register 3
+  pub cr3: RW<u32>,
+  /// [12]: Baud rate register
+  pub brr: RW<u32>,
+  /// [16]: Guard time and prescaler register
+  pub gtpr: RW<u32>,
+  /// [20]: Receiver timeout register
+  pub rtor: RW<u32>,
+  /// [24]: Request register
+  pub rqr: RW<u32>,
+  /// [28]: Interrupt &amp; status register
+  pub isr: RO<u32>,
+  /// [32]: Interrupt flag clear register
+  pub icr: RW<u32>,
+  /// [36]: Receive data register
+  pub rdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub tdr: RW<u32>,
+}
 
 pub fn usart8() -> *mut USART8 {
   1073814528 as *mut USART8
@@ -1122,7 +1495,30 @@ pub fn usart8() -> *mut USART8 {
 
 #[repr(C)]
 /// 
-pub struct USART5 { }
+pub struct USART5 {
+  /// [0]: Control register 1
+  pub cr1: RW<u32>,
+  /// [4]: Control register 2
+  pub cr2: RW<u32>,
+  /// [8]: Control register 3
+  pub cr3: RW<u32>,
+  /// [12]: Baud rate register
+  pub brr: RW<u32>,
+  /// [16]: Guard time and prescaler register
+  pub gtpr: RW<u32>,
+  /// [20]: Receiver timeout register
+  pub rtor: RW<u32>,
+  /// [24]: Request register
+  pub rqr: RW<u32>,
+  /// [28]: Interrupt &amp; status register
+  pub isr: RO<u32>,
+  /// [32]: Interrupt flag clear register
+  pub icr: RW<u32>,
+  /// [36]: Receive data register
+  pub rdr: RO<u32>,
+  /// [40]: Transmit data register
+  pub tdr: RW<u32>,
+}
 
 pub fn usart5() -> *mut USART5 {
   1073762304 as *mut USART5
@@ -1274,7 +1670,43 @@ pub fn tim16() -> *mut TIM16 {
 
 #[repr(C)]
 /// 
-pub struct TIM17 { }
+pub struct TIM17 {
+  /// [0]: control register 1
+  pub cr1: RW<u32>,
+  /// [4]: control register 2
+  pub cr2: RW<u32>,
+  reserved0x8: u32,
+  /// [12]: DMA/Interrupt enable register
+  pub dier: RW<u32>,
+  /// [16]: status register
+  pub sr: RW<u32>,
+  /// [20]: event generation register
+  pub egr: WO<u32>,
+  /// [24]: capture/compare mode register 1 (input mode)
+  pub ccmr1_input: RW<u32>,
+  reserved0x1c: u32,
+  /// [32]: capture/compare enable register
+  pub ccer: RW<u32>,
+  /// [36]: counter
+  pub cnt: RW<u32>,
+  /// [40]: prescaler
+  pub psc: RW<u32>,
+  /// [44]: auto-reload register
+  pub arr: RW<u32>,
+  /// [48]: repetition counter register
+  pub rcr: RW<u32>,
+  /// [52]: capture/compare register 1
+  pub ccr1: RW<u32>,
+  reserved0x38: u32,
+  reserved0x3c: u32,
+  reserved0x40: u32,
+  /// [68]: break and dead-time register
+  pub bdtr: RW<u32>,
+  /// [72]: DMA control register
+  pub dcr: RW<u32>,
+  /// [76]: DMA address for full transfer
+  pub dmar: RW<u32>,
+}
 
 pub fn tim17() -> *mut TIM17 {
   1073825792 as *mut TIM17
